@@ -22,6 +22,10 @@ def home():
 def register():
     return render_template('registration.html')
 
+@app.route("/forgot")
+def forgot_password():
+    return render_template('forgot.html')
+
 ##Main loop
 if __name__ == '__main__':
     print("Application is running")
