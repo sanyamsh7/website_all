@@ -26,7 +26,7 @@ def login():
 @app.route("/register")
 def register():
     return render_template('registration.html')
-
+  
 
 # Checking if the user exist for login
 @app.route("/valid_user", methods=['POST'])
@@ -83,6 +83,11 @@ def new_user():
 
 
 # Main loop
+@app.route("/forgot")
+def forgot_password():
+    return render_template('forgot.html')
+
+##Main loop
 if __name__ == '__main__':
     print("Application is running")
     app.run(debug=True)
