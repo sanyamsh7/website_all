@@ -18,15 +18,15 @@ def home():
     return render_template('home.html')
 
 
-@app.route("/login")
+@app.route("/login", methods=['POST', 'GET'])
 def login():
     return render_template('login.html')
 
 
-@app.route("/register")
+@app.route("/register", methods=['POST', 'GET'])
 def register():
     return render_template('registration.html')
-  
+
 
 # Checking if the user exist for login
 @app.route("/valid_user", methods=['POST'])
@@ -40,7 +40,6 @@ def valid_user():
         # retrieving the role of the concerned user
         row = cur.execute('''SELECT role FROM Credentials WHERE username = ? AND password = ?''',
                           (username, password)).fetchone()
-    print(row)
 
     if row is None:
         return 'You need to register first'
@@ -66,15 +65,21 @@ def new_user():
         role = request.form.get('reg_role')
 
         if password == password_confirm:
-            conn = sqlite3.connect('credentials.db')
-            cur = conn.cursor()
+            with sqlite3.connect('credentials.db') as conn:
+                cur = conn.cursor()
 
-            # inserting the records of new user in database
-            cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role) 
-                VALUES ( ?, ?, ?, ?, ?, ? )''', (username, password, email, full_name, gender, role))
+                cur.execute('''SELECT * FROM Credentials WHERE username = ? AND password = ?''',
+                            (username, password))
+                row = cur.fetchone()
+                if row is None:
 
-            conn.commit()
-            conn.close()
+                    # inserting the records of new user in database
+                    cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role) 
+                        VALUES ( ?, ?, ?, ?, ?, ? )''', (username, password, email, full_name, gender, role))
+                    conn.commit()
+
+                else:
+                    return 'You are already registered'
 
             return render_template('register_success.html')
 
@@ -83,11 +88,5 @@ def new_user():
 
 
 # Main loop
-@app.route("/forgot")
-def forgot_password():
-    return render_template('forgot.html')
-
-##Main loop
 if __name__ == '__main__':
-    print("Application is running")
     app.run(debug=True)
