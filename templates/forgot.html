@@ -1,14 +1,5 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<!-- All the files that are required -->
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{url_for('static' ,filename='main.css') }}">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+{% extends "layout.html" %}
+{% block content %}
 
 <div class="text-center" style="padding:50px 0">
     <div class="logo">Email</div>
@@ -29,3 +20,4 @@
         </form>
     </div>
 </div>
+{% endblock content %}
