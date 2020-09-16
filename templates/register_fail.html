@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +8,9 @@
     <title>Registration Fail</title>
 </head>
 <body>
-<h3>Your Password does not match. Please <a href="/register">try again</a></h3>
+    <div class="text-center" style="padding:50px 0">
+        <h3>Your Password does not match. Please <a href="/register">try again</a></h3>
+    </div>
 </body>
 </html>
+{% endblock content %}
