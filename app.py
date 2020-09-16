@@ -26,7 +26,7 @@ def login():
 @app.route("/register")
 def register():
     return render_template('registration.html')
-  
+
 
 # Checking if the user exist for login
 @app.route("/valid_user", methods=['POST'])
@@ -63,14 +63,14 @@ def new_user():
         email = request.form['reg_email']
         full_name = request.form['reg_fullname']
         gender = request.form.get('reg_gender')
-        role = request.form.get('reg_role')
+        role = request.form.get('reg_converses')
 
         if password == password_confirm:
             conn = sqlite3.connect('credentials.db')
             cur = conn.cursor()
 
             # inserting the records of new user in database
-            cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role) 
+            cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role)
                 VALUES ( ?, ?, ?, ?, ?, ? )''', (username, password, email, full_name, gender, role))
 
             conn.commit()
