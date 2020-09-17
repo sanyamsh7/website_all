@@ -88,7 +88,9 @@ def new_user():
         else:
             return render_template('register_fail.html')
 
-
+@app.route("/forgot")
+def forgot_password():
+    return render_template("forgot.html")
 # Main loop
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
