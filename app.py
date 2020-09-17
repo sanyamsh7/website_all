@@ -66,7 +66,7 @@ def new_user():
         email = request.form['reg_email']
         full_name = request.form['reg_fullname']
         gender = request.form.get('reg_gender')
-        role = request.form.get('reg_role')
+        role = request.form.get('reg_converses')
 
         if password == password_confirm:
             with sqlite3.connect('credentials.db') as conn:
@@ -76,6 +76,7 @@ def new_user():
                             (username, password))
                 row = cur.fetchone()
                 if row is None:
+
 
                     # inserting the records of new user in database
                     cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role) 
