@@ -44,7 +44,6 @@ def valid_user():
         # retrieving the role of the concerned user
         row = cur.execute('''SELECT role FROM Credentials WHERE username = ? AND password = ?''',
                           (username, password)).fetchone()
-
     if row is None:
         return 'You need to register first'
     elif row[0] == 'Employee':
@@ -76,10 +75,8 @@ def new_user():
                             (username, password))
                 row = cur.fetchone()
                 if row is None:
-
-
                     # inserting the records of new user in database
-                    cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role) 
+                    cur.execute('''INSERT INTO Credentials (username, password, email, fullname, gender, role)
                         VALUES ( ?, ?, ?, ?, ?, ? )''', (username, password, email, full_name, gender, role))
                     conn.commit()
 
