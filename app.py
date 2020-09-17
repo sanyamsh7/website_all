@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    return render_template('home1.html')
 
 
 @app.route("/login", methods=['POST', 'GET'])
@@ -23,9 +23,19 @@ def login():
     return render_template('login.html')
 
 
+@app.route("/about", methods=['POST', 'GET'])
+def about():
+    return render_template('about.html')
+
+
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     return render_template('registration.html')
+
+
+@app.route("/forget")
+def forget():
+    return render_template('forget.html')
 
 
 # Checking if the user exist for login
@@ -89,4 +99,4 @@ def new_user():
 
 # Main loop
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
