@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- REGISTRATION FORM -->
+<div class="text-center" style="padding:50px 0">
+	<div class="logo">Register</div>
+	<!-- Main Form -->
+	<div class="login-form-1">
+		<form action="http://127.0.0.1:5000/new_user" method="POST" id="register-form" class="text-left">
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label for="reg_username" class="sr-only">Email address</label>
+						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<label for="reg_password" class="sr-only">Password</label>
+						<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<label for="reg_password_confirm" class="sr-only">Password Confirm</label>
+						<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="Confirm password">
+					</div>
+
+					<div class="form-group">
+						<label for="reg_email" class="sr-only">Email</label>
+						<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="reg_fullname" class="sr-only">Full Name</label>
+						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="Full name">
+					</div>
+
+					<div class="form-group login-group-checkbox">
+						<input type="radio" class="" name="reg_gender" id="male" value="Male" placeholder="username">
+						<label for="male">Male</label>
+
+						<input type="radio" class="" name="reg_gender" id="female" value="Female" placeholder="username">
+						<label for="female">Female</label>
+					</div>
+
+					<div class="form-group login-group-checkbox">
+						<input type="radio" class="" name="reg_role" id="employee" value="Employee">
+						<label for="employee">Employee</label>
+
+						<input type="radio" class="" name="reg_role" id="employer" value="Employer">
+						<label for="employer">Employer</label>
+					</div>
+
+					<div class="form-group login-group-checkbox">
+						<input type="checkbox" class="" id="reg_agree" name="reg_agree">
+						<label for="reg_agree">I agree with <a href="#">terms</a></label>
+					</div>
+				</div>
+				<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+			</div>
+			<div class="etc-login-form">
+				<p>already have an account? <a href="/login">login here</a></p>
+			</div>
+		</form>
+	</div>
+	<!-- end:Main Form -->
+</div>
+
+{% endblock content %}
